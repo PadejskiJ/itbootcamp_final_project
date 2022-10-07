@@ -35,8 +35,7 @@ public class LoginTest extends BaseTest{
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
     }
-    //Test #3: Displays errors when user does not exist
-    //Podaci:random email i password koristeći faker libarary
+
     //asssert:
     //    • Verifikovati da greska sadrzi poruku User does not exists
     //    • Verifikovati da se u url-u stranice javlja /login ruta
@@ -56,11 +55,9 @@ public class LoginTest extends BaseTest{
         String actualResult2 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult2, expectedResult2);
     }
-        //Test #4: Displays errors when password is wrong
-        //Podaci: email i random password koristeći faker libarary
-        //asssert:
-        //    • Verifikovati da greska sadrzi poruku Wrong password
-        //    • Verifikovati da se u url-u stranice javlja /login ruta
+
+        //asssert: • Verifikovati da greska sadrzi poruku Wrong password
+        //         • Verifikovati da se u url-u stranice javlja /login ruta
     @Test
     public void test4PasswordIsWrong (){
         String email = "admin@admin.com";
@@ -86,31 +83,46 @@ public class LoginTest extends BaseTest{
     //    • Verifikovati da se u url-u stranice javlja /home ruta
     @Test
     public void test5Login (){
+        HomePage loginBtn = new HomePage(driver);
+        loginBtn.getLoginPageBtn().click();
         LoginPage login = new LoginPage(driver);
         login.login("admin@admin.com", "12345");
-
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String expectedResult5 = "https://vue-demo.daniel-avellaneda.com/home";
         String actualResult5 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult5, expectedResult5);
     }
     //Test #6: Logout
     //assert:
-    //    • Verifikovati da je dugme logout vidljivo na stranici
+    //    • Verifikovati da je dugme logout vidljivo na stranici, click na logout
     //    • Verifikovati da se u url-u stranice javlja /login ruta
     //    • Verifikovati da se nakon pokušaja otvaranja /home rute, u url-u stranice javlja /login ruta
     @Test
     public void test6Logout (){
+        HomePage loginBtn = new HomePage(driver);
+        loginBtn.goToLogin();
+        LoginPage login = new LoginPage(driver);
+        login.login("admin@admin.com", "12345");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String expectedResult6 = "LOGOUT";
         LoginPage logoutBtn = new LoginPage(driver);
         String actualResult6 = logoutBtn.getLogoutBtn().getText();
         Assert.assertEquals(actualResult6, expectedResult6);
+        logoutBtn.logout();
 
         String expectedResult7 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult7 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult7, expectedResult7);
 
-        HomePage homeBtn = new HomePage(driver);
-        homeBtn.goToHome();
+        driver.get("https://vue-demo.daniel-avellaneda.com/home");
         String expectedResult8 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult8 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult8, expectedResult8);
