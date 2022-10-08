@@ -1,5 +1,7 @@
 package tests;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ErrorMessagePage;
@@ -17,7 +19,6 @@ public class SignupTests extends BaseTest{
         String actualResult1 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult1,expectedResult1);
     }
-
     //assert:
     //    • Verifikovati da polje za unos emaila za atribut type ima vrednost email
     //    • Verifikovati da polje za unos lozinke za atribut type ima vrednost password
@@ -39,9 +40,6 @@ public class SignupTests extends BaseTest{
         confirmPasswordField.getConfirmPasswordField().getAttribute("type");
         Assert.assertEquals(confirmPasswordField.getConfirmPasswordField().getAttribute("type"), "password");
     }
-
-    //Test #3:
-    //Podaci:
     //    • name: Test Test
     //    • email: admin@admin.com
     //    • password: 123654
@@ -62,24 +60,23 @@ public class SignupTests extends BaseTest{
         String expectedResult3 = "https://vue-demo.daniel-avellaneda.com/signup";
         Assert.assertEquals(driver.getCurrentUrl(), expectedResult3);
     }
-
-    //Test #4: Signup
-    //Podaci:
     //    • name: Ime i prezime polaznika
     //    • email template: ime.prezime@itbootcamp.rs
     //    • password: 123456
     //    • confirm password: 123456
-    //assert:
-    //    • Verifikovati da dijalog za obavestenje sadrzi tekst IMPORTANT: Verify your account
+    //assert: Verifikovati da dijalog za obavestenje sadrzi tekst IMPORTANT: Verify your account
     @Test
     public void test4Signup (){
         SignupPage signupBtn = new SignupPage(driver);
         signupBtn.signupPage();
         SignupPage signUp = new SignupPage(driver);
         signUp.signup("Jelena Padejski", "jelena.padejski@itbootcamp.rs", "123456", "123456");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         SignupPage verifyMessage = new SignupPage(driver);
-        verifyMessage.getVerifySignupMessage().getText();
         Assert.assertEquals(verifyMessage.getVerifySignupMessage().getText(), "IMPORTANT: Verify your account");
     }
-
 }

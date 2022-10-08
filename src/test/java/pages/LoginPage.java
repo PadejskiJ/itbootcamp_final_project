@@ -12,17 +12,13 @@ protected By logoutBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]
 public LoginPage (WebDriver driver) {super(driver);}
 
 
-public WebElement getEmailField() {
-        return getDriver().findElement(emailField);
-    }
+public WebElement getEmailField() {return getDriver().findElement(emailField);}
 
 public WebElement getPasswordField() {
         return getDriver().findElement(passwordField);
     }
 
-public WebElement getLoginBtn() {
-        return getDriver().findElement(loginBtn);
-    }
+public WebElement getLoginBtn() {return getDriver().findElement(loginBtn);}
 
 public WebElement getLogoutBtn() { return getDriver().findElement(logoutBtn); }
 
