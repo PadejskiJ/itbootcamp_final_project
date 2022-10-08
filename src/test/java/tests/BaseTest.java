@@ -23,7 +23,7 @@ public class BaseTest {
     public void setup(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\jpbou\\IdeaProjects\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://vue-demo.daniel-avellaneda.com/");
         faker = new Faker();
         driver.manage().deleteAllCookies();
@@ -36,11 +36,6 @@ public class BaseTest {
         List< WebElement> backToHome = driver.findElements(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]"));
         if (backToHome.size()==1){
             logoutBtn.logout();
-        }
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 

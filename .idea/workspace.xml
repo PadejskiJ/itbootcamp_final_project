@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b52c07d0-d56a-4fb4-a8a8-4f3b43ca413f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/SignupPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/SignupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/SignupTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/AdminCitiesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/AdminCitiesPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/AdminCitiesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/AdminCitiesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,16 +34,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jpbou/IdeaProjects/project.27.09.TestNG&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/jpbou/IdeaProjects/domaci26.Testing.SauceDemo"
   }
-}</component>
-  <component name="RunManager" selected="TestNG.AdminCitiesTests.test2CreateNewCity">
-    <configuration name="AdminCitiesTests.test1" type="TestNG" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="TestNG.AuthRoutesTests">
+    <configuration name="AuthRoutesTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="itbootcamp_final_project" />
       <extension name="coverage">
         <pattern>
@@ -52,7 +52,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.AdminCitiesTests" />
+      <option name="MAIN_CLASS_NAME" value="tests.AuthRoutesTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthRoutesTests.test1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="itbootcamp_final_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.AuthRoutesTests" />
       <option name="METHOD_NAME" value="test1" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
@@ -61,7 +78,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminCitiesTests.test2CreateNewCity" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthRoutesTests.test2" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="itbootcamp_final_project" />
       <extension name="coverage">
         <pattern>
@@ -70,8 +87,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.AdminCitiesTests" />
-      <option name="METHOD_NAME" value="test2CreateNewCity" />
+      <option name="MAIN_CLASS_NAME" value="tests.AuthRoutesTests" />
+      <option name="METHOD_NAME" value="test2" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -79,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SignupTests" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthRoutesTests.test3" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="itbootcamp_final_project" />
       <extension name="coverage">
         <pattern>
@@ -88,25 +105,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.SignupTests" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SignupTests.test3DisplaysErrorsWhenUserAlreadyExists" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="itbootcamp_final_project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.SignupTests" />
-      <option name="METHOD_NAME" value="test3DisplaysErrorsWhenUserAlreadyExists" />
+      <option name="MAIN_CLASS_NAME" value="tests.AuthRoutesTests" />
+      <option name="METHOD_NAME" value="test3" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -114,7 +114,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SignupTests.test4Signup" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthRoutesTests.test4" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="itbootcamp_final_project" />
       <extension name="coverage">
         <pattern>
@@ -123,8 +123,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.SignupTests" />
-      <option name="METHOD_NAME" value="test4Signup" />
+      <option name="MAIN_CLASS_NAME" value="tests.AuthRoutesTests" />
+      <option name="METHOD_NAME" value="test4" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -134,11 +134,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.AdminCitiesTests.test2CreateNewCity" />
-        <item itemvalue="TestNG.AdminCitiesTests.test1" />
-        <item itemvalue="TestNG.SignupTests.test3DisplaysErrorsWhenUserAlreadyExists" />
-        <item itemvalue="TestNG.SignupTests.test4Signup" />
-        <item itemvalue="TestNG.SignupTests" />
+        <item itemvalue="TestNG.AuthRoutesTests" />
+        <item itemvalue="TestNG.AuthRoutesTests.test4" />
+        <item itemvalue="TestNG.AuthRoutesTests.test3" />
+        <item itemvalue="TestNG.AuthRoutesTests.test2" />
+        <item itemvalue="TestNG.AuthRoutesTests.test1" />
       </list>
     </recent_temporary>
   </component>
