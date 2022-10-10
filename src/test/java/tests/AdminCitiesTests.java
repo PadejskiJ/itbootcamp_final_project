@@ -15,26 +15,18 @@ public class AdminCitiesTests extends BaseTest {
     public void setUp() {
         adminCitiesPage.setCityName("Zrenjanin");
     }
+
     //Test #1: Visits the admin cities page and list cities
     //    • admin email: admin@admin.com
     //    • admin password: 12345
     //assert: Verifikovati da se u url-u stranice javlja /admin/cities ruta
     //        Verifikovati postojanje logout dugmeta
     @Test
-    public void test1VisitsTheAdminCitiesPage () {
+    public void verifyLogoutBtn() {
         homePage.goToLogin();
         loginPage.login("admin@admin.com", "12345");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         adminCitiesPage.getAdminBtn().click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
         adminCitiesPage.getCitiesBtn().click();
 
@@ -43,17 +35,16 @@ public class AdminCitiesTests extends BaseTest {
         Assert.assertEquals(actualResult1, expectedResult1);
 
         String expectedResult2 = "LOGOUT";
-        LoginPage logoutBtn = new LoginPage(driver);
-        String actualResult2 = logoutBtn.getLogoutBtn().getText();
+        String actualResult2 = loginPage.getLogoutBtn().getText();
         Assert.assertEquals(actualResult2, expectedResult2);
-        logoutBtn.logout();
+        loginPage.logout();
     }
 
     //Test #2:
     // kreirati grad
     //assert: Verifikovati da poruka sadrzi tekst Saved successfully
     @Test
-    public void test2CreateNewCityAndVerifyMessage (){
+    public void verifyNewCityMessage() {
         homePage.goToLogin();
         loginPage.login("admin@admin.com", "12345");
 
@@ -77,7 +68,7 @@ public class AdminCitiesTests extends BaseTest {
     //Podaci:edituje se grad koji je u testu 2 kreiran na isto ime + "- edited" (primer: Beograd – Beograd edited)
     //assert: Verifikovati da poruka sadrzi tekst Saved successfully
     @Test
-    public void test3EditCityAndVerifyMessage (){
+    public void verifyEditCityMessage() {
         homePage.goToLogin();
         loginPage.login("admin@admin.com", "12345");
 
@@ -95,7 +86,7 @@ public class AdminCitiesTests extends BaseTest {
     //Podaci:editovani grad iz testa #3
     //assert: Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage
     @Test
-    public void test4SearchCityAndVerifySearch (){
+    public void verifySearchCity() {
         homePage.goToLogin();
         loginPage.login("admin@admin.com", "12345");
 
@@ -119,10 +110,9 @@ public class AdminCitiesTests extends BaseTest {
     //    • Sacekati da popu za prikaz poruke bude vidljiv
     //    • Verifikovati da poruka sadrzi tekst Deleted successfully
     @Test
-    public void test5DeleteCityAndVerifyMessage (){
+    public void test5DeleteCityAndVerifyMessage() {
 
-
-
+        adminCitiesPage.clickDeleteCity("Zrenjanin");
 
     }
 }

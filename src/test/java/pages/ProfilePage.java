@@ -5,8 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProfilePage extends BaseClasPage{
+public class ProfilePage extends BasePage {
     private By myProfileBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[3]");
     private By profileName = By.id("name");
     private By profilePhone = By.id("phone");
@@ -19,12 +20,12 @@ public class ProfilePage extends BaseClasPage{
     Faker faker = new Faker();
     String name = faker.name().firstName();
     String phone = faker.number().digits(7);
-    String city = faker.address().city();
+    String city = "New York";
     String country = faker.address().country();
-    String twiter = faker.bothify("https://???????.com");
-    String gitHub = faker.bothify("https://???????.com");
+    String twiter = "https://" + faker.internet().domainName();
+    String gitHub = "https://" + faker.internet().domainName();
 
-    public ProfilePage (WebDriver driver) {super(driver);}
+    public ProfilePage (WebDriver driver, WebDriverWait driverWait) {super(driver,driverWait);}
     public WebElement getMyProfileBtn (){return getDriver().findElement(myProfileBtn);}
     public WebElement getProfileName (){return getDriver().findElement(profileName);}
     public WebElement getProfilePhone (){return getDriver().findElement(profilePhone);}

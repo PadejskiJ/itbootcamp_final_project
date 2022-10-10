@@ -17,9 +17,7 @@ public class LocaleTests extends BaseTest{
 
         String expectedResult1 = "Página de aterrizaje";
 
-        localePage.getLanguageBtn().click();
-        localePage.getSpanishBtn().click();
-        localePage.getHomeBtn().click();
+        localePage.chooseLanguageES();
 
         String actualResult1 = localePage.getHeaderText().getText();
         Assert.assertEquals(actualResult1, expectedResult1);
@@ -32,8 +30,7 @@ public class LocaleTests extends BaseTest{
     public void test2 () {
         String expectedResult2 = "Landing";
 
-        localePage.getLanguageBtn().click();
-        localePage.getEnglishBtn().click();
+        localePage.chooseLanguageEN();
 
         String actrualResult2 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult2,expectedResult2);
@@ -46,8 +43,7 @@ public class LocaleTests extends BaseTest{
     public void test3 () {
         String expectedResult3 = "Page d'atterrissage";
 
-        localePage.getLanguageBtn().click();
-        localePage.getFrenchBtn().click();
+        localePage.chooseLanguageFR();
 
         String actrualResult3 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult3,expectedResult3);

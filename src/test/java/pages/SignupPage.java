@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignupPage extends BaseClasPage {
+public class SignupPage extends BasePage {
     protected By signupBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[4]");
     protected By nameField = By.id("name");
     protected By emailField = By.id("email");
@@ -14,7 +14,7 @@ public class SignupPage extends BaseClasPage {
     protected By signMeUpBtn = By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button");
     protected By verifySignupMessage = By.xpath("//*[@id=\"app\"]/div[4]/div/div/div[1]");
 
-    public SignupPage (WebDriver driver) {super(driver);}
+    public SignupPage (WebDriver driver, WebDriverWait driverWait) {super(driver,driverWait);}
 
     public WebElement getSignupBtn() {
         return getDriver().findElement(signupBtn);

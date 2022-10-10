@@ -12,7 +12,7 @@ public class AuthRoutesTests extends BaseTest{
     //    • Ucitati /home stranu kada korisnik nije ulogovan
     //    • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
-    public void test1 (){
+    public void verifyHomeURL (){
         String expectedResult1 = "https://vue-demo.daniel-avellaneda.com/login";
 
         homePage.goToLogin();
@@ -26,7 +26,7 @@ public class AuthRoutesTests extends BaseTest{
     //    • Ucitati /profile stranu
     //    • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
-    public void test2 () {
+    public void verifyProfileURL () {
         driver.get("https://vue-demo.daniel-avellaneda.com/profile");
         String expectedResult2 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult2 = driver.getCurrentUrl();
@@ -38,7 +38,7 @@ public class AuthRoutesTests extends BaseTest{
     //    • Ucitati /admin/cities stranu
     //    • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
-    public void test3 () {
+    public void verifyAdminCitiesURL () {
         driver.get("https://vue-demo.daniel-avellaneda.com/admin/cities");
         String expectedResult3 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult3 = driver.getCurrentUrl();
@@ -50,7 +50,7 @@ public class AuthRoutesTests extends BaseTest{
     //    • Ucitati /admin/users stranu
     //    • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
-    public void test4 () {
+    public void verifyAdminUsersURL () {
         driver.get("https://vue-demo.daniel-avellaneda.com/admin/users");
         String expectedResult4 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult4 = driver.getCurrentUrl();

@@ -30,35 +30,35 @@ public class BaseTest {
 
     @BeforeClass
 
-    public void setup(){
+    public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\jpbou\\IdeaProjects\\chromedriver.exe");
         driver = new ChromeDriver();
-       // driverWait = new WebDriverWait(driverWait);
+        driverWait = new WebDriverWait(driver,Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://vue-demo.daniel-avellaneda.com/");
         faker = new Faker();
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
 
-        homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
-        errorMessagePage = new ErrorMessagePage(driver);
-        signupPage = new SignupPage(driver);
-        profilePage = new ProfilePage(driver);
-        localePage = new LocalePage(driver);
-        adminCitiesPage = new AdminCitiesPage(driver);
-
+        homePage = new HomePage(driver,driverWait);
+        loginPage = new LoginPage(driver, driverWait);
+        errorMessagePage = new ErrorMessagePage(driver, driverWait);
+        signupPage = new SignupPage(driver, driverWait);
+        profilePage = new ProfilePage(driver, driverWait);
+        localePage = new LocalePage(driver, driverWait);
+        adminCitiesPage = new AdminCitiesPage(driver,driverWait);
     }
+
     @AfterMethod
-    public void afterMethod (){
-        LoginPage logoutBtn = new LoginPage(driver);
-        List< WebElement> backToHome = driver.findElements(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]"));
-        if (backToHome.size()==1){
-            logoutBtn.logout();
+    public void afterMethod() {
+        List<WebElement> backToHome = driver.findElements(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]"));
+        if (backToHome.size() == 1) {
+            loginPage.logout();
         }
     }
 
     @AfterClass
-    public void afterClass(){driver.close();}
-
+    public void afterClass() {
+        driver.quit();
+    }
 }
