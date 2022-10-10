@@ -7,11 +7,6 @@ import pages.LoginPage;
 import pages.ProfilePage;
 
 public class ProfileTests extends BaseTest{
-    HomePage homePage = new HomePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
-    ProfilePage myProfile = new ProfilePage(driver);
-
-
 
     //Test #1: Edits profile
 //Podaci:random podaci korišćenjem faker library-ja
@@ -22,16 +17,16 @@ public class ProfileTests extends BaseTest{
     public void test1 () {
         homePage.goToLogin();
         loginPage.login("admin@admin.com", "12345");
-        myProfile.fiilMyProfile();
+        profilePage.fiilMyProfile();
 
-        Assert.assertTrue(myProfile.getProfileSavedMessage().getText().contains("Profile saved successfuly"));
+        Assert.assertTrue(profilePage.getProfileSavedMessage().getText().contains("Profile saved successfuly"));
 
-        Assert.assertEquals(myProfile.getProfileName().getAttribute("value"),"Name");
-        Assert.assertEquals(myProfile.getProfilePhone().getAttribute("value"), "Phone");
-        Assert.assertEquals(myProfile.getProfileCity().getAttribute("value"), "City");
-        Assert.assertEquals(myProfile.getProfileCountry().getAttribute("value"), "Country");
-        Assert.assertEquals(myProfile.getProfileTwiter().getAttribute("value"), "Twitter");
-        Assert.assertEquals(myProfile.getProfileGitHub().getAttribute("value"), "GitHub");
+        Assert.assertEquals(profilePage.getProfileName().getAttribute("value"),"Name");
+        Assert.assertEquals(profilePage.getProfilePhone().getAttribute("value"), "Phone");
+        Assert.assertEquals(profilePage.getProfileCity().getAttribute("value"), "City");
+        Assert.assertEquals(profilePage.getProfileCountry().getAttribute("value"), "Country");
+        Assert.assertEquals(profilePage.getProfileTwiter().getAttribute("value"), "Twitter");
+        Assert.assertEquals(profilePage.getProfileGitHub().getAttribute("value"), "GitHub");
 
 
     }

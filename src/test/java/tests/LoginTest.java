@@ -9,9 +9,7 @@ import pages.LoginPage;
 
 
 public class LoginTest extends BaseTest{
-    HomePage homePage = new HomePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
-    ErrorMessagePage errorMessagePage = new ErrorMessagePage(driver);
+
 
     //assert: • Verifikovati da se u url-u stranice javlja ruta /login
     @Test

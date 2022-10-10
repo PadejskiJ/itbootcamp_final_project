@@ -6,7 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class HomePage extends BaseClasPage{
-    private By loginPageBtn = By.className("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]");
+
+    private By loginPageBtn = By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]/span");
 
     private By homeBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[1]");
 

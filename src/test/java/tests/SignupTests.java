@@ -13,8 +13,8 @@ public class SignupTests extends BaseTest{
     //assert: Verifikovati da se u url-u stranice javlja /signup ruta
     @Test
     public void test1VisitsTheSignupPage (){
-        SignupPage signupBtn = new SignupPage(driver);
-        signupBtn.signupPage();
+
+        signupPage.signupPage();
         String expectedResult1 = "https://vue-demo.daniel-avellaneda.com/signup";
         String actualResult1 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult1,expectedResult1);
@@ -25,20 +25,16 @@ public class SignupTests extends BaseTest{
     //    • Verifikovati da polje za unos lozinke za potvrdu za atribut type ima vrednost password
     @Test
     public void test2ChecksInputTypes (){
-        SignupPage signupBtn = new SignupPage(driver);
-        signupBtn.signupPage();
-        SignupPage emailField = new SignupPage(driver);
-        SignupPage passwordField = new SignupPage(driver);
-        SignupPage confirmPasswordField = new SignupPage(driver);
+        signupPage.signupPage();
 
-        emailField.getEmailField().getAttribute("type");
-        Assert.assertEquals(emailField.getEmailField().getAttribute("type"), "email");
+        signupPage.getEmailField().getAttribute("type");
+        Assert.assertEquals(signupPage.getEmailField().getAttribute("type"), "email");
 
-        passwordField.getPasswordField().getAttribute("type");
-        Assert.assertEquals(passwordField.getPasswordField().getAttribute("type"), "password");
+        signupPage.getPasswordField().getAttribute("type");
+        Assert.assertEquals(signupPage.getPasswordField().getAttribute("type"), "password");
 
-        confirmPasswordField.getConfirmPasswordField().getAttribute("type");
-        Assert.assertEquals(confirmPasswordField.getConfirmPasswordField().getAttribute("type"), "password");
+        signupPage.getConfirmPasswordField().getAttribute("type");
+        Assert.assertEquals(signupPage.getConfirmPasswordField().getAttribute("type"), "password");
     }
     //    • name: Test Test
     //    • email: admin@admin.com
@@ -49,13 +45,11 @@ public class SignupTests extends BaseTest{
     //    • Verifikovati da se u url-u stranice javlja /signup ruta
     @Test
     public void test3DisplaysErrorsWhenUserAlreadyExists (){
-        SignupPage signupBtn = new SignupPage(driver);
-        signupBtn.signupPage();
-        SignupPage signUp = new SignupPage(driver);
-        signUp.signup("Test Test","admin@admin.com", "123654", "123654");
+
+        signupPage.signupPage();
+        signupPage.signup("Test Test","admin@admin.com", "123654", "123654");
         String expectedResult2 = "E-mail already exists";
-        ErrorMessagePage errorSignUp = new ErrorMessagePage(driver);
-        String actualResult2 = errorSignUp.getErrorSignUp().getText();
+        String actualResult2 = errorMessagePage.getErrorSignUp().getText();
         Assert.assertEquals(actualResult2,expectedResult2);
         String expectedResult3 = "https://vue-demo.daniel-avellaneda.com/signup";
         Assert.assertEquals(driver.getCurrentUrl(), expectedResult3);
@@ -67,16 +61,13 @@ public class SignupTests extends BaseTest{
     //assert: Verifikovati da dijalog za obavestenje sadrzi tekst IMPORTANT: Verify your account
     @Test
     public void test4Signup (){
-        SignupPage signupBtn = new SignupPage(driver);
-        signupBtn.signupPage();
-        SignupPage signUp = new SignupPage(driver);
-        signUp.signup("Jelena Padejski", "jelena.padejski@itbootcamp.rs", "123456", "123456");
+        signupPage.signupPage();
+        signupPage.signup("Jelena Padejski", "jelena.padejski@itbootcamp.rs", "123456", "123456");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        SignupPage verifyMessage = new SignupPage(driver);
-        Assert.assertEquals(verifyMessage.getVerifySignupMessage().getText(), "IMPORTANT: Verify your account");
+        Assert.assertEquals(signupPage.getVerifySignupMessage().getText(), "IMPORTANT: Verify your account");
     }
 }

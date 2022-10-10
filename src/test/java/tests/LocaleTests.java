@@ -8,8 +8,6 @@ import pages.LocalePage;
 
 public class LocaleTests extends BaseTest{
 
-    LocalePage localePage = new LocalePage(driver);
-
     //Test #1: Set locale to ES
     //assert:
     //    • Postaviti jezik na ES
@@ -32,10 +30,11 @@ public class LocaleTests extends BaseTest{
     //    • Verifikovati da se na stranici u hederu javlja tekst
     @Test
     public void test2 () {
+        String expectedResult2 = "Landing";
 
         localePage.getLanguageBtn().click();
         localePage.getEnglishBtn().click();
-        String expectedResult2 = "Landing";
+
         String actrualResult2 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult2,expectedResult2);
     }
@@ -45,9 +44,11 @@ public class LocaleTests extends BaseTest{
     //    • Verifikovati da se na stranici u hederu javlja tekst Page d'atterrissage
     @Test
     public void test3 () {
+        String expectedResult3 = "Page d'atterrissage";
+
         localePage.getLanguageBtn().click();
         localePage.getFrenchBtn().click();
-        String expectedResult3 = "Page d'atterrissage";
+
         String actrualResult3 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult3,expectedResult3);
     }

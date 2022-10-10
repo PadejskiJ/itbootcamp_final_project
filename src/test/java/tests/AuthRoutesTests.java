@@ -13,9 +13,10 @@ public class AuthRoutesTests extends BaseTest{
     //    • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
     public void test1 (){
-        HomePage login = new HomePage(driver);
-        login.goToLogin();
         String expectedResult1 = "https://vue-demo.daniel-avellaneda.com/login";
+
+        homePage.goToLogin();
+
         String actualResult1 = driver.getCurrentUrl();
         Assert.assertEquals(actualResult1, expectedResult1);
     }

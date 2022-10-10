@@ -12,10 +12,6 @@ import pages.LoginPage;
 
 public class AdminCitiesTests extends BaseTest {
 
-
-    AdminCitiesPage adminCitiesPage = new AdminCitiesPage(driver);
-    HomePage homePage = new HomePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
     public void setUp() {
         adminCitiesPage.setCityName("Zrenjanin");
     }
