@@ -9,14 +9,17 @@ import pages.LoginPage;
 
 
 public class LoginTest extends BaseTest{
+    HomePage homePage = new HomePage(driver);
+    LoginPage loginPage = new LoginPage(driver);
+    ErrorMessagePage errorMessagePage = new ErrorMessagePage(driver);
 
     //assert: • Verifikovati da se u url-u stranice javlja ruta /login
     @Test
     public void test1VisitsTheLoginPage () {
         String expectedResult = "https://vue-demo.daniel-avellaneda.com/login";
 
-        HomePage loginBtn = new HomePage(driver);
-        loginBtn.goToLogin();
+
+        homePage.goToLogin();
         String actualResult = driver.getCurrentUrl();
 
         Assert.assertEquals(actualResult, expectedResult);
@@ -25,11 +28,9 @@ public class LoginTest extends BaseTest{
     //    • Verifikovati da polje za unos lozinke za atribut type ima vrednost password
     @Test
     public void test2ChecksInputTypes () {
-        LoginPage emailField = new LoginPage(driver);
-        LoginPage passwordField = new LoginPage(driver);
-        emailField.getEmailField().getAttribute("type");
-        Assert.assertEquals(emailField.getEmailField().getAttribute("type"),"email");
-        Assert.assertEquals(passwordField.getPasswordField().getAttribute("type"), "password");
+        loginPage.getEmailField().getAttribute("type");
+        Assert.assertEquals(loginPage.getEmailField().getAttribute("type"),"email");
+        Assert.assertEquals(loginPage.getPasswordField().getAttribute("type"), "password");
 
         String expectedResult = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult = driver.getCurrentUrl();
@@ -43,12 +44,10 @@ public class LoginTest extends BaseTest{
     public void test3UserDoesntExist (){
         String emailFake = faker.internet().emailAddress();
         String passwordFake = faker.internet().password();
-        LoginPage login = new LoginPage(driver);
-        login.login(emailFake,passwordFake);
+        loginPage.login(emailFake,passwordFake);
 
-        ErrorMessagePage error = new ErrorMessagePage(driver);
         String expectedResult1 = "User does not exists";
-        String actualResult1 = error.getErrorMessage().getText();
+        String actualResult1 = errorMessagePage.getErrorMessage().getText();
         Assert.assertEquals(actualResult1, expectedResult1);
 
         String expectedResult2 = "https://vue-demo.daniel-avellaneda.com/login";
@@ -63,11 +62,10 @@ public class LoginTest extends BaseTest{
         String email = "admin@admin.com";
         String passwordFake = faker.internet().password();
         LoginPage login = new LoginPage(driver);
-        login.login(email,passwordFake);
+        loginPage.login(email,passwordFake);
 
-        ErrorMessagePage error = new ErrorMessagePage(driver);
         String expectedResult3 = "User does not exists";
-        String actualResult3 = error.getErrorWrongPassword().getText();
+        String actualResult3 = errorMessagePage.getErrorWrongPassword().getText();
         Assert.assertEquals(actualResult3,expectedResult3);
 
         String expectedResult4 = "https://vue-demo.daniel-avellaneda.com/login";
@@ -83,10 +81,8 @@ public class LoginTest extends BaseTest{
     //    • Verifikovati da se u url-u stranice javlja /home ruta
     @Test
     public void test5Login (){
-        HomePage loginBtn = new HomePage(driver);
-        loginBtn.getLoginPageBtn().click();
-        LoginPage login = new LoginPage(driver);
-        login.login("admin@admin.com", "12345");
+        homePage.getLoginPageBtn().click();
+        loginPage.login("admin@admin.com", "12345");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -103,20 +99,17 @@ public class LoginTest extends BaseTest{
     //    • Verifikovati da se nakon pokušaja otvaranja /home rute, u url-u stranice javlja /login ruta
     @Test
     public void test6Logout (){
-        HomePage loginBtn = new HomePage(driver);
-        loginBtn.goToLogin();
-        LoginPage login = new LoginPage(driver);
-        login.login("admin@admin.com", "12345");
+        homePage.goToLogin();
+        loginPage.login("admin@admin.com", "12345");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         String expectedResult6 = "LOGOUT";
-        LoginPage logoutBtn = new LoginPage(driver);
-        String actualResult6 = logoutBtn.getLogoutBtn().getText();
+        String actualResult6 = loginPage.getLogoutBtn().getText();
         Assert.assertEquals(actualResult6, expectedResult6);
-        logoutBtn.logout();
+        loginPage.logout();
 
         String expectedResult7 = "https://vue-demo.daniel-avellaneda.com/login";
         String actualResult7 = driver.getCurrentUrl();

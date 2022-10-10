@@ -1,6 +1,10 @@
 package tests;
 
+import org.checkerframework.checker.units.qual.A;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AdminCitiesPage;
 import pages.HomePage;
@@ -8,6 +12,13 @@ import pages.LoginPage;
 
 public class AdminCitiesTests extends BaseTest {
 
+
+    AdminCitiesPage adminCitiesPage = new AdminCitiesPage(driver);
+    HomePage homePage = new HomePage(driver);
+    LoginPage loginPage = new LoginPage(driver);
+    public void setUp() {
+        adminCitiesPage.setCityName("Zrenjanin");
+    }
     //Test #1: Visits the admin cities page and list cities
     //    • admin email: admin@admin.com
     //    • admin password: 12345
@@ -15,24 +26,21 @@ public class AdminCitiesTests extends BaseTest {
     //        Verifikovati postojanje logout dugmeta
     @Test
     public void test1VisitsTheAdminCitiesPage () {
-        HomePage loginPageBtn = new HomePage(driver);
-        loginPageBtn.goToLogin();
-        LoginPage loginBtn = new LoginPage(driver);
-        loginBtn.login("admin@admin.com", "12345");
+        homePage.goToLogin();
+        loginPage.login("admin@admin.com", "12345");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        AdminCitiesPage admitBtn = new AdminCitiesPage(driver);
-        admitBtn.getAdminBtn().click();
+        adminCitiesPage.getAdminBtn().click();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        AdminCitiesPage citiesBtn = new AdminCitiesPage(driver);
-        citiesBtn.getCitiesBtn().click();
+
+        adminCitiesPage.getCitiesBtn().click();
 
         String expectedResult1 = "https://vue-demo.daniel-avellaneda.com/admin/cities";
         String actualResult1 = driver.getCurrentUrl();
@@ -50,64 +58,41 @@ public class AdminCitiesTests extends BaseTest {
     //assert: Verifikovati da poruka sadrzi tekst Saved successfully
     @Test
     public void test2CreateNewCityAndVerifyMessage (){
-        HomePage loginPageBtn = new HomePage(driver);
-        loginPageBtn.goToLogin();
-        LoginPage loginBtn = new LoginPage(driver);
-        loginBtn.login("admin@admin.com", "12345");
+        homePage.goToLogin();
+        loginPage.login("admin@admin.com", "12345");
 
-        AdminCitiesPage admitBtn = new AdminCitiesPage(driver);
-        admitBtn.getAdminBtn().click();
+        adminCitiesPage.getAdminBtn().click();
 
-        AdminCitiesPage citiesBtn = new AdminCitiesPage(driver);
-        citiesBtn.getCitiesBtn().click();
+        adminCitiesPage.getCitiesBtn().click();
 
-        AdminCitiesPage newItemBtn = new AdminCitiesPage(driver);
-        newItemBtn.getNewItemBtn().click();
+        adminCitiesPage.getNewItemBtn().click();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        AdminCitiesPage inputNewItem = new AdminCitiesPage(driver);
-        inputNewItem.getInputNewItem().sendKeys("Zrenjanin");
+        adminCitiesPage.getInputNewItem().sendKeys("Zrenjanin");
 
-        AdminCitiesPage saveNewItem = new AdminCitiesPage(driver);
-        saveNewItem.getSaveNewItem().click();
+        adminCitiesPage.getSaveNewItem().click();
 
-        AdminCitiesPage savedMessage = new AdminCitiesPage(driver);
-        Assert.assertTrue(savedMessage.getSavedMessage().getText().contains("Saved successfully"));
+        Assert.assertTrue(adminCitiesPage.getSavedMessage().getText().contains("Saved successfully"));
     }
 
     //Podaci:edituje se grad koji je u testu 2 kreiran na isto ime + "- edited" (primer: Beograd – Beograd edited)
     //assert: Verifikovati da poruka sadrzi tekst Saved successfully
     @Test
     public void test3EditCityAndVerifyMessage (){
-        HomePage loginPageBtn = new HomePage(driver);
-        loginPageBtn.goToLogin();
-        LoginPage loginBtn = new LoginPage(driver);
-        loginBtn.login("admin@admin.com", "12345");
+        homePage.goToLogin();
+        loginPage.login("admin@admin.com", "12345");
 
-        AdminCitiesPage admitBtn = new AdminCitiesPage(driver);
-        admitBtn.getAdminBtn().click();
+        adminCitiesPage.getAdminBtn().click();
 
-        AdminCitiesPage citiesBtn = new AdminCitiesPage(driver);
-        citiesBtn.getCitiesBtn().click();
+        adminCitiesPage.getCitiesBtn().click();
 
-        /*AdminCitiesPage editCity = new AdminCitiesPage(driver);
-        editCity.getEditCity().click();
-        */
+        adminCitiesPage.clickEditCity("Zrenjanin");
+        adminCitiesPage.editCity("Zrenjanin - edited");
 
-        AdminCitiesPage tableCityRows = new AdminCitiesPage(driver);
-        tableCityRows.editCity("Zrenjanin");
-
-        AdminCitiesPage editCityWrite = new AdminCitiesPage(driver);
-        editCityWrite.getEditCityWrite().sendKeys("- edited");
-
-        AdminCitiesPage editCityWriteSaveBtn = new AdminCitiesPage(driver);
-        editCityWriteSaveBtn.getEditCityWriteSaveBtn().click();
-
-        AdminCitiesPage editCityMessage = new AdminCitiesPage(driver);
-        Assert.assertTrue(editCityMessage.getEditCityMessage().getText().contains("Saved successfully"));
+        Assert.assertTrue(adminCitiesPage.getEditCityMessage().getText().contains("Saved successfully"));
     }
 
     //Test #4:
@@ -115,19 +100,14 @@ public class AdminCitiesTests extends BaseTest {
     //assert: Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage
     @Test
     public void test4SearchCityAndVerifySearch (){
-        HomePage loginPageBtn = new HomePage(driver);
-        loginPageBtn.goToLogin();
-        LoginPage loginBtn = new LoginPage(driver);
-        loginBtn.login("admin@admin.com", "12345");
+        homePage.goToLogin();
+        loginPage.login("admin@admin.com", "12345");
 
-        AdminCitiesPage admitBtn = new AdminCitiesPage(driver);
-        admitBtn.getAdminBtn().click();
+        adminCitiesPage.getAdminBtn().click();
 
-        AdminCitiesPage citiesBtn = new AdminCitiesPage(driver);
-        citiesBtn.getCitiesBtn().click();
+        adminCitiesPage.getCitiesBtn().click();
 
-        AdminCitiesPage searchCity = new AdminCitiesPage(driver);
-        searchCity.getSearchCity().sendKeys("Zrenjanin");
+        //adminCitiesPage.getSearchCity().sendKeys("Zrenjanin");
     }
 
 
@@ -144,6 +124,9 @@ public class AdminCitiesTests extends BaseTest {
     //    • Verifikovati da poruka sadrzi tekst Deleted successfully
     @Test
     public void test5DeleteCityAndVerifyMessage (){
+
+
+
 
     }
 }

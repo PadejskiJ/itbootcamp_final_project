@@ -6,18 +6,22 @@ import org.openqa.selenium.WebElement;
 
 public class LocalePage extends BaseClasPage{
 
-    protected By languageBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button");
-    protected By spanishBtn = By.xpath("//*[@id=\"list-item-136\"]");
+    private By languageBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button");
+    private By spanishBtn = By.xpath("v-list-item v-list-item--link theme--light btnES");
 
-    protected By englishBtn = By.xpath("//*[@id=\"list-item-134\"]");
+    private By englishBtn = By.xpath("v-list-item v-list-item--link theme--light btnEN");
 
-    protected By franchBtn = By.xpath("//*[@id=\"list-item-138\"]");
+    private By frenchBtn = By.xpath("v-list-item v-list-item--link theme--light btnFR");
+    private By homeBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[1]");
+    private By headerText = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
 
     public LocalePage (WebDriver driver) {super(driver);}
 
     public WebElement getLanguageBtn (){return getDriver().findElement(languageBtn);}
     public WebElement getSpanishBtn () { return getDriver().findElement(spanishBtn);}
     public WebElement getEnglishBtn () {return getDriver().findElement(englishBtn);}
-    public WebElement getFranchBtn () { return  getDriver().findElement(franchBtn);}
+    public WebElement getFrenchBtn() { return  getDriver().findElement(frenchBtn);}
+    public WebElement getHomeBtn () {return  getDriver().findElement(homeBtn);}
+    public WebElement getHeaderText () {return  getDriver().findElement(headerText);}
 
 }

@@ -1,10 +1,14 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LocalePage;
 
 public class LocaleTests extends BaseTest{
+
+    LocalePage localePage = new LocalePage(driver);
 
     //Test #1: Set locale to ES
     //assert:
@@ -12,26 +16,27 @@ public class LocaleTests extends BaseTest{
     //    • Verifikovati da se na stranici u hederu javlja tekst Página de aterrizaje
     @Test
     public void test1 () {
-        LocalePage languageBtn = new LocalePage(driver);
-        languageBtn.getLanguageBtn().click();
-        LocalePage spanishBtn = new LocalePage(driver);
-        spanishBtn.getSpanishBtn().click();
-        String expectedResult1 = "";
-        String actrualResult1 = ;
-        Assert.assertEquals(actrualResult1,expectedResult1);
+
+        String expectedResult1 = "Página de aterrizaje";
+
+        localePage.getLanguageBtn().click();
+        localePage.getSpanishBtn().click();
+        localePage.getHomeBtn().click();
+
+        String actualResult1 = localePage.getHeaderText().getText();
+        Assert.assertEquals(actualResult1, expectedResult1);
     }
     //Test #2: Set locale to EN
     //assert:
     //    • Postaviti jezik na EN
-    //    • Verifikovati da se na stranici u hederu javlja tekst Landing
+    //    • Verifikovati da se na stranici u hederu javlja tekst
     @Test
     public void test2 () {
-        LocalePage languageBtn = new LocalePage(driver);
-        languageBtn.getLanguageBtn().click();
-        LocalePage englishBtn = new LocalePage(driver);
-        englishBtn.getEnglishBtn().click();
-        String expectedResult2 = "";
-        String actrualResult2 = ;
+
+        localePage.getLanguageBtn().click();
+        localePage.getEnglishBtn().click();
+        String expectedResult2 = "Landing";
+        String actrualResult2 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult2,expectedResult2);
     }
     //Test #3: Set locale to FR
@@ -40,12 +45,10 @@ public class LocaleTests extends BaseTest{
     //    • Verifikovati da se na stranici u hederu javlja tekst Page d'atterrissage
     @Test
     public void test3 () {
-        LocalePage languageBtn = new LocalePage(driver);
-        languageBtn.getLanguageBtn().click();
-        LocalePage franchBtn = new LocalePage(driver);
-        franchBtn.getFranchBtn().click();
-        String expectedResult3 = "";
-        String actrualResult3 = ;
+        localePage.getLanguageBtn().click();
+        localePage.getFrenchBtn().click();
+        String expectedResult3 = "Page d'atterrissage";
+        String actrualResult3 = localePage.getHeaderText().getText();
         Assert.assertEquals(actrualResult3,expectedResult3);
     }
 }
