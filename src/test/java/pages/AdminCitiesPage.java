@@ -9,20 +9,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class AdminCitiesPage extends BasePage {
-protected By adminBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[1]");
-    protected By citiesBtn = By.xpath("//*[@id=\"app\"]/div[3]/div[1]/a[1]");
-    protected By newItemBtn = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[1]/div[3]/form/div[1]/button");
-    protected By inputNewItem = By.xpath("//*[@id=\"name\"]");
-    protected By saveNewItem = By.xpath("//*[@id=\"app\"]/div[5]/div/div/div[3]/button[2]");
-    protected By savedMessage = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
+    private By adminBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[1]");
+    private By citiesBtn = By.xpath("//*[@id=\"app\"]/div[3]/div[1]/a[1]");
+    private By newItemBtn = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[1]/div[3]/form/div[1]/button");
+    private By inputNewItem = By.xpath("//*[@id=\"name\"]");
+    private By saveNewItem = By.xpath("//*[@id=\"app\"]/div[5]/div/div/div[3]/button[2]");
+    private By savedMessage = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
     private By editBtn = By.id("edit");
-    private By editField = By.id("name");
+    private By editField = By.xpath("//*[@id=\"app\"]/div[6]/div/div/div[2]/div/div/div[3]/span/div");
 
     private By saveButtonEditField = By.xpath("//*[@id=\"app\"]/div[5]/div/div/div[3]/button[2]");
 
     private By tableCityRows = By.xpath("//table/tbody/tr");
 
     private By editCityMessage = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
+
+    private By searchBtn = By.id("search");
+    private By searchCity = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr/td");
 
     private By deleteBtn = By.id("delete");
     private By deleteConfirmButton = By.xpath("//button/span[contains(text(), 'Delete')]");
@@ -72,6 +75,9 @@ protected By adminBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/
     public WebElement getEditField () {return getDriver().findElement(editField);}
     public WebElement getSaveButtonEditField () {return getDriver().findElement(saveButtonEditField);}
     public WebElement getEditCityMessage (){return getDriver().findElement(editCityMessage);}
+    public WebElement getSearchBtn () {return getDriver().findElement(searchBtn);}
+    public WebElement getSearchCity () {return getDriver().findElement(searchCity);}
+
     public WebElement getDeleteBtn (){return getDriver().findElement(deleteBtn);}
     public WebElement getDeleteConfirmButton() {
         return getDriver().findElement(deleteConfirmButton);
@@ -86,15 +92,12 @@ protected By adminBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/
             }
         }
     }
-    //getCityName().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
 
     public void editCity(String newName) {
-
         getEditField().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getEditField().sendKeys(newName);
         getSaveButtonEditField().click();
     }
-
 
     public void clickDeleteCity (String city) {
         for (int i = 0; i < getTableCityRows().size(); i++) {
@@ -105,4 +108,6 @@ protected By adminBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/
             }
         }
     }
+
+
 }

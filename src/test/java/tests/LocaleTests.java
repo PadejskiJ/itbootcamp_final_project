@@ -9,11 +9,8 @@ import pages.LocalePage;
 public class LocaleTests extends BaseTest{
 
     //Test #1: Set locale to ES
-    //assert:
-    //    • Postaviti jezik na ES
-    //    • Verifikovati da se na stranici u hederu javlja tekst Página de aterrizaje
     @Test
-    public void test1 () {
+    public void verifyTextES () {
 
         String expectedResult1 = "Página de aterrizaje";
 
@@ -23,11 +20,8 @@ public class LocaleTests extends BaseTest{
         Assert.assertEquals(actualResult1, expectedResult1);
     }
     //Test #2: Set locale to EN
-    //assert:
-    //    • Postaviti jezik na EN
-    //    • Verifikovati da se na stranici u hederu javlja tekst
     @Test
-    public void test2 () {
+    public void verifyTextEN () {
         String expectedResult2 = "Landing";
 
         localePage.chooseLanguageEN();
@@ -36,11 +30,8 @@ public class LocaleTests extends BaseTest{
         Assert.assertEquals(actrualResult2,expectedResult2);
     }
     //Test #3: Set locale to FR
-    //assert:
-    //    • Postaviti jezik na FR
-    //    • Verifikovati da se na stranici u hederu javlja tekst Page d'atterrissage
     @Test
-    public void test3 () {
+    public void verifyTextFR () {
         String expectedResult3 = "Page d'atterrissage";
 
         localePage.chooseLanguageFR();
