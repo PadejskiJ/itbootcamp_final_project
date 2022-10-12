@@ -33,20 +33,20 @@ public class BaseTest {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\jpbou\\IdeaProjects\\chromedriver.exe");
         driver = new ChromeDriver();
-        driverWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        driverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://vue-demo.daniel-avellaneda.com/");
         faker = new Faker();
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
 
-        homePage = new HomePage(driver,driverWait);
+        homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         errorMessagePage = new ErrorMessagePage(driver, driverWait);
         signupPage = new SignupPage(driver, driverWait);
         profilePage = new ProfilePage(driver, driverWait);
         localePage = new LocalePage(driver, driverWait);
-        adminCitiesPage = new AdminCitiesPage(driver,driverWait);
+        adminCitiesPage = new AdminCitiesPage(driver, driverWait);
     }
 
     @AfterMethod

@@ -25,32 +25,60 @@ public class ProfilePage extends BasePage {
     String twiter = "https://" + faker.internet().domainName();
     String gitHub = "https://" + faker.internet().domainName();
 
-    public ProfilePage (WebDriver driver, WebDriverWait driverWait) {super(driver,driverWait);}
-    public WebElement getMyProfileBtn (){return getDriver().findElement(myProfileBtn);}
-    public WebElement getProfileName (){return getDriver().findElement(profileName);}
-    public WebElement getProfilePhone (){return getDriver().findElement(profilePhone);}
-    public WebElement getProfileCity (){return getDriver().findElement(profileCity);}
-    public WebElement getProfileCountry (){return getDriver().findElement(profileCountry);}
-    public WebElement getProfileTwiter (){return getDriver().findElement(profileTwiter);}
-    public WebElement getProfileGitHub (){return getDriver().findElement(profileGitHub);}
-    public WebElement getProfileSaveBtn () {return  getDriver().findElement(profileSaveBtn);}
-    public WebElement getProfileSavedMessage () {return  getDriver().findElement(profileSavedMessage);}
+    public ProfilePage(WebDriver driver, WebDriverWait driverWait) {
+        super(driver, driverWait);
+    }
 
-    public void fiilMyProfile () {
+    public WebElement getMyProfileBtn() {
+        return getDriver().findElement(myProfileBtn);
+    }
+
+    public WebElement getProfileName() {
+        return getDriver().findElement(profileName);
+    }
+
+    public WebElement getProfilePhone() {
+        return getDriver().findElement(profilePhone);
+    }
+
+    public WebElement getProfileCity() {
+        return getDriver().findElement(profileCity);
+    }
+
+    public WebElement getProfileCountry() {
+        return getDriver().findElement(profileCountry);
+    }
+
+    public WebElement getProfileTwiter() {
+        return getDriver().findElement(profileTwiter);
+    }
+
+    public WebElement getProfileGitHub() {
+        return getDriver().findElement(profileGitHub);
+    }
+
+    public WebElement getProfileSaveBtn() {
+        return getDriver().findElement(profileSaveBtn);
+    }
+
+    public WebElement getProfileSavedMessage() {
+        return getDriver().findElement(profileSavedMessage);
+    }
+
+    public void fiilMyProfile() {
         getMyProfileBtn().click();
-        getProfileName().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfileName().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfileName().sendKeys(name);
-        getProfilePhone().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfilePhone().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfilePhone().sendKeys(phone);
-        getProfileCity().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfileCity().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfileCity().sendKeys(city);
-        getProfileCountry().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfileCountry().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfileCountry().sendKeys(country);
-        getProfileTwiter().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfileTwiter().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfileTwiter().sendKeys(twiter);
-        getProfileGitHub().sendKeys(Keys.CONTROL+"A", Keys.DELETE);
+        getProfileGitHub().sendKeys(Keys.CONTROL + "A", Keys.DELETE);
         getProfileGitHub().sendKeys(gitHub);
         getProfileSaveBtn().click();
-
     }
 }

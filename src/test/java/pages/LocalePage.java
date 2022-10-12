@@ -10,15 +10,11 @@ import java.util.List;
 public class LocalePage extends BasePage {
 
     private By languageBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button");
-
     private By spanishBtn = By.id("list-item-91");
-
     private By englishBtn = By.id("list-item-91");
-
     private By frenchBtn = By.id("list-item-93");
     private By homeBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[1]");
     private By headerText = By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
-
 
     public LocalePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);

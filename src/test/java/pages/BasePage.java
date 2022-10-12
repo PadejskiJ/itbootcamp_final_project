@@ -8,10 +8,9 @@ public class BasePage {
     private WebDriver driver;
     private WebDriverWait driverWait;
 
-    public BasePage(WebDriver driver,WebDriverWait driverWait) {
+    public BasePage(WebDriver driver, WebDriverWait driverWait) {
         this.driver = driver;
         this.driverWait = driverWait;
-
     }
 
     public WebDriver getDriver() {
