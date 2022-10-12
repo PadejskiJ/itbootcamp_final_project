@@ -16,7 +16,7 @@ programming language: Java - JDK 17
 Maven, Selenium, TestNG
 
 
- * Login Tests
+* Login Tests
 
 Test #1: Visits the login page
 
@@ -31,7 +31,7 @@ Test #5: Login
 Test #6: Logout
 
 
- * Signup Tests
+* Signup Tests
 
 Test #1: Visits the signup page
 
@@ -42,7 +42,7 @@ Test #3: Displays errors when user already exists
 Test #4: Signup
 
 
- * Admin Cities Tests
+* Admin Cities Tests
 
 Test #1: Visits the admin cities page and list cities
 
@@ -55,7 +55,7 @@ Test #4: Search city
 Test #5: Delete city
 
 
- * Auth Routes Tests
+* Auth Routes Tests
 
 Test #1: Forbids visits to home url if not authenticated
 
@@ -66,7 +66,7 @@ Test #3: Forbids visits to admin cities url if not authenticated
 Test #4: Forbids visits to admin users url if not authenticated
 
 
- * Locale Tests
+* Locale Tests
 
 Test #1: Set locale to ES
 
@@ -75,6 +75,6 @@ Test #2: Set locale to EN
 Test #3: Set locale to FR
 
 
- * Profile Tests 
+* Profile Tests 
 
 Test #1: Edits profile
