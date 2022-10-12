@@ -16,15 +16,12 @@ programming language: Java - JDK 17
 Maven, Selenium, TestNG
 
 
-
 Login Tests
 
+Test #1: Visits the login page//
+Test #2: Checks input types//
 
-Test #1: Visits the login page
-
-Test #2: Checks input types
-
-Test #3: Displays errors when user does not exist
+Test #3: Displays errors when user does not exist//
 
 Test #4: Displays errors when password is wrong
 
