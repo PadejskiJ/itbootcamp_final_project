@@ -3,7 +3,7 @@
 Project: Testing app https://vue-demo.daniel-avellaneda.com/ 
 
 Enviroment:
-OS Windows 10 /n
+OS Windows 10 
 Google Chrome version 106.0.5249.103
 IntelliJ 2022.1.4 CE
 programming language: Java - JDK 17
